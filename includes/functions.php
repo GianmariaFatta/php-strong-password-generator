@@ -1,4 +1,9 @@
 <?php 
+session_start();
+
+$_SESSION['password:_length']=$_GET["password_length"];
+
+
 $length = $_GET["password_length"];
 $password="";
 
@@ -14,8 +19,8 @@ function createPassword($length,$password){
         $last = strlen($elements[$select] ) -1;
         $password .= $elements[$select][rand(0,$last)];
     };
-    session_start();
     return $password ;
+    
 }
 
 ?>

@@ -1,3 +1,27 @@
+
+<?php 
+$length = $_GET["password_length"];
+$password="";
+
+function createPassword($length,$password){
+    $elements=[
+        "abcdefghilmnopqrstuvzjkwxy",
+        "ABCDEFGHILMNOPQRSTUVZJKWXY",
+        "0123456789",
+        "!£$%&/?#@*"
+    ];
+    for($i = 0; $i < $length; $i++){
+        $select = rand(0,3);
+        $last = strlen($elements[$select] ) -1;
+        $password .= $elements[$select][rand(0,$last)];
+
+    };
+    return $password ;
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +38,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
+
+
+
 <body>
-    
+    <div class="container ">
+        <div class="row  d-flex  justify-content-center align-items-center">
+            <div class="col-12 text-center mt-5 p-5">
+                <h1>STRONG PASSWORD</h1>
+                <h2>genera la tua password sicura</h2>
+            </div>
+            <div class="alert alert-primary" role="alert"><?php echo createPassword($length,$password)?>
+            </div>
+            <div class="col-6">
+                <p>inserisci la lunghezza della tua password</p>
+            </div>
+            <div class="col-6"><form class="  w-100 d-flex flex-column align-items-left " action="#" method="get" >
+            <input class=" " type="number" name="password_length" placeholder="lunghezza password" min=7 max=15 trim >
+            <button type="submit" class="btn btn-danger mt-2 w-25" > Invia</button>
+   </form></div>
+            
+        </div>
+    </div>
 </body>
 </html>
+
+<style>
+   
+</style>

@@ -1,26 +1,5 @@
-
 <?php 
-$length = $_GET["password_length"];
-$password="";
-
-function createPassword($length,$password){
-    $elements=[
-        "abcdefghilmnopqrstuvzjkwxy",
-        "ABCDEFGHILMNOPQRSTUVZJKWXY",
-        "0123456789",
-        "!£$%&/?#@*"
-    ];
-    for($i = 0; $i < $length; $i++){
-        $select = rand(0,3);
-        $last = strlen($elements[$select] ) -1;
-        $password .= $elements[$select][rand(0,$last)];
-
-    };
-    return $password ;
-}
-
-
-
+include __DIR__ .'/includes/functions.php'
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,9 +17,6 @@ function createPassword($length,$password){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
-
-
-
 <body>
     <div class="container ">
         <div class="row  d-flex  justify-content-center align-items-center">
@@ -56,7 +32,8 @@ function createPassword($length,$password){
             <div class="col-6"><form class="  w-100 d-flex flex-column align-items-left " action="#" method="get" >
             <input class=" " type="number" name="password_length" placeholder="lunghezza password" min=7 max=15 trim >
             <button type="submit" class="btn btn-danger mt-2 w-25" > Invia</button>
-   </form></div>
+   </form>
+</div>
             
         </div>
     </div>

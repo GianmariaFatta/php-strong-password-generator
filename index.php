@@ -1,5 +1,12 @@
 <?php 
-include __DIR__ .'/includes/functions.php'
+include __DIR__ .'/includes/functions.php';
+
+if(isset($_GET["password_length"])){
+   $result= createPassword($_GET['password_length']);
+
+  if($result)header('Location: success.php'); 
+};
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,13 +31,12 @@ include __DIR__ .'/includes/functions.php'
                 <h1>STRONG PASSWORD</h1>
                 <h2>genera la tua password sicura</h2>
             </div>
-            <div class="alert alert-primary" role="alert"><?php echo createPassword($length,$password)?>
-            </div>
+        
             <div class="col-6">
                 <p>inserisci la lunghezza della tua password</p>
             </div>
             <div class="col-6"><form class="  w-100 d-flex flex-column align-items-left " action="#" method="get" >
-            <input class=" " type="number" name="password_length" placeholder="lunghezza password" min=7 max=15 trim >
+            <input class=" " type="number" name="password_length" placeholder="lunghezza password" min=7 max=15 value="$length" >
             <button type="submit" class="btn btn-danger mt-2 w-25" > Invia</button>
    </form>
 </div>
